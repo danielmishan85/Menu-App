@@ -28,6 +28,7 @@ public class ParseJson {
         dish.setDescription(jsonObject.getString("dishDescription"));
         dish.setImage(jsonObject.getString("dishImage"));
         dish.setPrice(jsonObject.getInt("dishPrice"));
+        dish.setCategory(jsonObject.getString("dishCategory"));
 
         return dish;
     }

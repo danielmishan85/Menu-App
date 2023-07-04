@@ -23,13 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView dishesList;
     DishesRecyclerAdapter adapter;
     List<Dish> data;
-    Button addDishBtn;
+    Button addDishBtn, startersBtn, pastaBtn, pizzaBtn, fishBtn, dessertsBtn;
     ExecutorService es;
 
     @Override
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addDishBtn = findViewById(R.id.main_add_btn);
+        startersBtn = findViewById(R.id.main_startersBtn);
+        pastaBtn = findViewById(R.id.main_pastaBtn);
+        pizzaBtn = findViewById(R.id.main_pizzaBtn);
+        fishBtn = findViewById(R.id.main_fishBtn);
+        dessertsBtn = findViewById(R.id.main_dessertsBtn);
 
         data = new ArrayList<>();
         es = Executors.newSingleThreadExecutor();
@@ -66,11 +72,15 @@ public class MainActivity extends AppCompatActivity {
         addDishBtn.setOnClickListener(v -> {
             startActivity(new Intent(this, AddDishActivity.class));
         });
+        startersBtn.setOnClickListener(v -> {
+            List<Dish> arr = data.stream().filter(d -> d.getCategory().equals("Starters")).collect(Collectors.toList());
+            data.addAll(arr);
+            adapter.notifyDataSetChanged();
+        });
     }
 
     private void initRecyclerview() {
         dishesList = findViewById(R.id.main_list);
-        dishesList.setLayoutManager(new LinearLayoutManager(this));
 
         dishesList.setHasFixedSize(true);
         dishesList.setLayoutManager(new LinearLayoutManager(this));

@@ -15,17 +15,17 @@ public class Model {
         return _instance;
     }
 
-    private Model() {
-        dishesList = new ArrayList<>();
-        for(int i =0 ; i<10; i++) {
-            dishesList.add(new Dish(""+i, "", "daniella daniella daniella daniella daniella daniella daniella daniella daniella daniella daniella daniella", i, ""+i));
-        }
-
-    }
-
-    public List<Dish> getAllDishes(){
-        return dishesList;
-    }
+//    private Model() {
+//        dishesList = new ArrayList<>();
+//        for(int i =0 ; i<10; i++) {
+//            dishesList.add(new Dish(""+i, "", "daniella daniella daniella daniella daniella daniella daniella daniella daniella daniella daniella daniella", i, ""+i));
+//        }
+//
+//    }
+//
+//    public List<Dish> getAllDishes(){
+//        return dishesList;
+//    }
 
     public List<Dish> getDishes(){
         String dishes="";
